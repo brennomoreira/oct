@@ -6,9 +6,10 @@ root :to => "admin#home"
 
   # devise_for :admins
   # get 'admin/home'
+  get '/welcomes' => 'welcome#index', as: 'welcome'
 
   # get 'admin/home'
-
+  resources :welcomes
   resources :reviews
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.
@@ -18,7 +19,8 @@ root :to => "admin#home"
   #root 'products#new'
   # root to: "products#new"
 
-  # Example of regular route:
+  get 'welcome' => 'welcome#index'
+    # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
    get 'admin' => 'admin#home'
   # get 'admin' => 'admin#home'

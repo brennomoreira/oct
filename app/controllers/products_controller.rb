@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    puts admin_signed_in?.inspect
-    puts "above"
+    # puts admin_signed_in?.inspect
+    # puts "above"
     @products = Product.all
   end
 
@@ -20,17 +20,26 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    if admin_signed_in? == false
+      redirect_to welcome_url
+    end
       # @product = product_admin.products.build
     @product = Product.new
   end
 
   # GET /products/1/edit
   def edit
+    if admin_signed_in? == false
+      redirect_to welcome_url
+    end
   end
 
   # POST /products
   # POST /products.json
   def create
+    if admin_signed_in? == false
+      redirect_to welcome_url
+    end
     # @product = product_admin.products.build
     @product = Product.new(product_params)
 
@@ -48,6 +57,9 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    if admin_signed_in? == false
+      redirect_to welcome_url
+    end
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -62,6 +74,9 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    if admin_signed_in? == false
+      redirect_to welcome_url
+    end
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }

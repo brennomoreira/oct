@@ -3,6 +3,10 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     puts admin_signed_in?.inspect
+    if admin_signed_in? == false
+      # redirect_to products_url
+      redirect_to welcome_url
+    end
     @reviews = Review.all
   end
 
