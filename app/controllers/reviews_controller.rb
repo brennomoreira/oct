@@ -1,9 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-
-  # GET /reviews
+  before_action  :authenticate_admin!, :set_review, only: [:show, :edit, :update, :destroy]
   # GET /reviews.json
   def index
+    puts admin_signed_in?.inspect
     @reviews = Review.all
   end
 

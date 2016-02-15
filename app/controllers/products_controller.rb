@@ -1,11 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  # before_filter :authenticate_admin!
+  before_action  :authenticate_admin!, :set_product, only: [:show, :edit, :update, :destroy]
 
 
 
   # GET /products
   # GET /products.json
   def index
+    puts admin_signed_in?.inspect
+    puts "above"
     @products = Product.all
   end
 
@@ -17,6 +20,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+      # @product = product_admin.products.build
     @product = Product.new
   end
 
@@ -27,6 +31,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    # @product = product_admin.products.build
     @product = Product.new(product_params)
 
     respond_to do |format|
