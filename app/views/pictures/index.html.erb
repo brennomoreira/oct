@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<% @pictures.each do |picture| %>
+  <ul>
+    <li><%= image_tag picture.url %></li>
+    <li><%= link_to 'Show', picture %></li>
+    <li><%= link_to 'Edit', edit_picture_path(picture) %></li>
+    <li><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+<% end %>
+<br>
+<%= link_to 'New Picture', new_picture_path %>

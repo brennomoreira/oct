@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   # before_filter :authenticate_admin!
   before_action  :authenticate_admin!, :set_product, only: [:show, :edit, :update, :destroy]
-
+  
 
 
   # GET /products

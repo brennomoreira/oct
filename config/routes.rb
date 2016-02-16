@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pictures
   devise_for :admins
 # root to: "admin#home"
 root :to => "admin#home"
